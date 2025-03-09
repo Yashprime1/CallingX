@@ -7,7 +7,11 @@ const port = 3000
 const http = require('http')
 const { Server } = require("socket.io")
 const server = http.createServer(app)
-const io = new Server(server)
+const io = new Server(port,{
+    cors: {
+        origin: ["*"]
+    }
+})
 
 io.on('connection', (socket) => {
     console.log('someone connected!');
