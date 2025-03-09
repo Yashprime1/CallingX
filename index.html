@@ -10,8 +10,8 @@
     <button id="send">Send</button>
     <div id="chat"></div>
 
-    <script type="module">
-        import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
+    <script>
+        import { io } from "socket.io-client";
         function addToChat(message){
             const chat = document.getElementById('chat')
             chat.innerHTML += `<p>${message}</p>`
