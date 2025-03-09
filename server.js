@@ -7,7 +7,7 @@ const port = 3000
 const http = require('http')
 const { Server } = require("socket.io")
 const server = http.createServer(app)
-const io = new Server(port,{
+const io = new Server(8080,{
     cors: {
         origin: ["*"]
     }
