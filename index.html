@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Socket.io Chat App</title>
+  </head>
+  
+  <body>
+    <h1>Socket.io Chat App</h1>
+    <input id="text" type="text">
+    <button id="send">Send</button>
+    <div id="chat"></div>
+
+    <script type="module">
+        import { io } from "https://cdn.socket.io/4.8.1/socket.io.esm.min.js";
+        function addToChat(message){
+            const chat = document.getElementById('chat')
+            chat.innerHTML += `<p>${message}</p>`
+        }
+        const socket = io();
+        socket.on('message',addToChat);
+        document.getElementById('send').addEventListener('click',()=>{
+            const text = document.getElementById('text')
+            addToChat(text.value)
+            socket.emit('message',text.value)
+            text.value = ''
+        });
+    </script>
+  </body>
+</html>
